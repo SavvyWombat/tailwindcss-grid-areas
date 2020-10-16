@@ -1,11 +1,11 @@
-import extractGridLineNames from '../../src/util/extractGridLineNames'
+import extractGridAreaNames from '../../src/util/extractGridAreaNames'
 
 test('passing nothing gives you an empty list', () => {
-  expect(extractGridLineNames()).toEqual([])
+  expect(extractGridAreaNames()).toEqual([])
 })
 
 test('passing an empty object gives you an empty list', () => {
-  expect(extractGridLineNames({})).toEqual([])
+  expect(extractGridAreaNames({})).toEqual([])
 })
 
 test('passing an empty definition gives you an empty list', () => {
@@ -13,7 +13,7 @@ test('passing an empty definition gives you an empty list', () => {
     layout: []
   }
 
-  expect(extractGridLineNames({})).toEqual([])
+  expect(extractGridAreaNames({})).toEqual([])
 })
 
 test('single grid area', () => {
@@ -21,9 +21,8 @@ test('single grid area', () => {
     layout: ['abc']
   }
 
-  expect(extractGridLineNames(gridTemplateAreas)).toEqual([
-    'abc-start',
-    'abc-end',
+  expect(extractGridAreaNames(gridTemplateAreas)).toEqual([
+    'abc',
   ])
 })
 
@@ -32,9 +31,8 @@ test('deduplicates names', () => {
     layout: ['abc abc']
   }
 
-  expect(extractGridLineNames(gridTemplateAreas)).toEqual([
-    'abc-start',
-    'abc-end',
+  expect(extractGridAreaNames(gridTemplateAreas)).toEqual([
+    'abc',
   ])
 })
 
@@ -43,11 +41,9 @@ test('multiple areas', () => {
     layout: ['abc def']
   }
 
-  expect(extractGridLineNames(gridTemplateAreas)).toEqual([
-    'abc-start',
-    'abc-end',
-    'def-start',
-    'def-end',
+  expect(extractGridAreaNames(gridTemplateAreas)).toEqual([
+    'abc',
+    'def',
   ])
 })
 
@@ -56,11 +52,9 @@ test('multiple rows', () => {
     layout: ['abc', 'def']
   }
 
-  expect(extractGridLineNames(gridTemplateAreas)).toEqual([
-    'abc-start',
-    'abc-end',
-    'def-start',
-    'def-end',
+  expect(extractGridAreaNames(gridTemplateAreas)).toEqual([
+    'abc',
+    'def',
   ])
 })
 
@@ -69,11 +63,9 @@ test('excludes . (empty cell)', () => {
     layout: ['abc abc', 'def .']
   }
 
-  expect(extractGridLineNames(gridTemplateAreas)).toEqual([
-    'abc-start',
-    'abc-end',
-    'def-start',
-    'def-end',
+  expect(extractGridAreaNames(gridTemplateAreas)).toEqual([
+    'abc',
+    'def',
   ])
 })
 
@@ -83,12 +75,9 @@ test('multiple layouts', () => {
     large: ['abc abc abc', 'def hij hij',]
   }
 
-  expect(extractGridLineNames(gridTemplateAreas)).toEqual([
-    'abc-start',
-    'abc-end',
-    'def-start',
-    'def-end',
-    'hij-start',
-    'hij-end',
+  expect(extractGridAreaNames(gridTemplateAreas)).toEqual([
+    'abc',
+    'def',
+    'hij',
   ])
 })
