@@ -1,0 +1,46 @@
+{
+  "name": "@savvywombat/tailwindcss-grid-areas",
+  "version": "1.0.0",
+  "description": "A plugin to provide TailwindCSS utilities for grid areas.",
+  "author": "Stuart Jones <stuart@savvywombat.com.au>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savvywombat/tailwindcss-grid-areas.git"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-jest": "^26.0.0",
+    "clean-css": "^4.1.9",
+    "eslint": "^6.0.1",
+    "eslint-config-postcss": "^2.0.2",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "jest": "^25.1.0",
+    "jest-matcher-css": "^1.1.0",
+    "lodash": "^4.17.20",
+    "postcss": "^8.1.1",
+    "prettier": "^2.1.2",
+    "tailwindcss": "^1.9.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "8.9.0"
+          }
+        }
+      ]
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/savvywombat/tailwindcss-grid-areas/issues"
+  },
+  "homepage": "https://github.com/savvywombat/tailwindcss-grid-areas#readme"
+}
