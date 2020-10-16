@@ -76,3 +76,19 @@ test('excludes . (empty cell)', () => {
     'def-end',
   ])
 })
+
+test('multiple layouts', () => {
+  const gridTemplateAreas = {
+    default: ['abc abc', 'def .'],
+    large: ['abc abc abc', 'def hij hij',]
+  }
+
+  expect(extractGridLineNames(gridTemplateAreas)).toEqual([
+    'abc-start',
+    'abc-end',
+    'def-start',
+    'def-end',
+    'hij-start',
+    'hij-end',
+  ])
+})
