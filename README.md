@@ -14,28 +14,14 @@ yarn add --dev @savvywombat/tailwindcss-grid-areas
 
 ## Usage
 
-Require the plugin into your `tailwindcss.config.js` file:
-
-```javascript
-// tailwindcss.config.js
-module.exports = {
-  plugins: [
-    require('@savvywombat/tailwindcss-grid-areas')
-  ]
-}
-```
-
-Now, when adding `gridTemplateColumns` and `gridTemplateRows`, you can name the lines and utilities will be generated:
+Require the plugin into your `tailwindcss.config.js` file, and define your template areas:
 
 ```javascript
 // tailwindcss.config.js
 module.exports = {
   theme: {
-    gridTemplateColumns: {
-      'default-layout': '[left] 1fr [gutter-left] 2rem [content-left] calc(768px - 4rem) [content-right] 2rem [gutter-right] 1fr [right]',
-    },
-    gridTemplateRows: {
-      'default-layout': '[top header-top] 4rem [header-bottom content-top] minmax(1fr, max-content) [content-bottom footer-top] auto [bottom]',
+    gridTemplateAreas: {
+      'layout': ['header header header', '. main .', 'footer footer footer']
     }
   },
   plugins: [
@@ -47,60 +33,92 @@ module.exports = {
 This will generate the following utilities (in addition to the default):
 
 ```
-col-start-left
-col-start-gutter-left
-col-start-content-left
-col-start-content-right
-col-start-gutter-right
-col-start-right
+grid-areas-layout
 
-col-end-left
-col-end-gutter-left
-col-end-content-left
-col-end-content-right
-col-end-gutter-right
-col-end-right
+grid-in-header
+grid-in-main
+grid-in-footer
 
-row-start-top
-row-start-header-top
-row-start-header-bottom
-row-start-content-top
-row-start-content-bottom
-row-start-footer-top
-row-start-footer-bottom
-row-start-bottom
+col-start-header
+col-start-main
+col-start-footer
+col-end-header
+col-end-main
+col-end-footer
 
-row-end-top
-row-end-header-top
-row-end-header-bottom
-row-end-content-top
-row-end-content-bottom
-row-end-footer-top
-row-end-footer-bottom
-row-end-bottom
+row-start-header
+row-start-main
+row-start-footer
+row-end-header
+row-end-main
+row-end-footer
 ```
 
-## Responsiveness
+## Controlling column widths and row heights
 
-These labels do not have any responsive behaviour by themselves. Responsive grid layouts can be defined using `gridTemplateColumns` and `gridTemplateRows`:
+Just as with CSS, `gridTemplateAreas` works with the core `gridTemplateColumns` and `gridTemplateRows` plugins to allow you to control the heights and widths of the grid cells:
 
 ```javascript
 // tailwindcss.config.js
 module.exports = {
   theme: {
+    gridTemplateAreas: {
+      'layout': ['header header header', 'nav main .', 'footer footer footer']
+    },
     gridTemplateColumns: {
-      'default-layout': '[left] 1fr [gutter-left] 2rem [content-left] calc(768px - 4rem) [content-right] 2rem [gutter-right] 1fr [right]',
-      'small-layout': '[left gutter-left] 1rem [content-left] 1fr [content-right] 1rem [gutter-right right]',
+      'layout': '24rem 1fr 2rem',
     },
     gridTemplateRows: {
-      'default-layout': '[top header-top] 4rem [header-bottom content-top] minmax(1fr, max-content) [content-bottom footer-top] auto [bottom]',
+      'layout': '4rem 1fr auto',
+    },
+  },
+  plugins: [
+    require('@savvywombat/tailwindcss-grid-areas')
+  ],
+  variants: {
+    gridTemplateAreas: ['responsive']
+  }
+}
+```
+
+```html
+<body class="grid grid-areas-layout grid-cols-layout grid-rows-layout h-full">
+    <header class="grid-in-header"></header>
+    <nav class="grid-in-nav"></nav>
+    <main class="grid-in-main"></main>
+    <footer class="grid-in-footer"></footer>
+</body>
+```
+
+## Variants
+
+```javascript
+// tailwindcss.config.js
+module.exports = {
+  theme: {
+    gridTemplateAreas: {
+      'wide': ['header header header', '. main .', 'footer footer footer'],
+      'slim': ['header', 'main', 'footer'],
     }
   },
   plugins: [
     require('@savvywombat/tailwindcss-grid-areas')
-  ]
+  ],
+  variants: {
+    gridTemplateAreas: ['responsive']
+  }
 }
 ```
+
+Configuring variants for `gridTemplateAreas` will generate variants for the `grid-areas-*` utility.
+
+This allows you to modify the grid topology for responsive layouts:
+
+```html
+<div class="grid grid-areas-slim md:grid-areas-wide"></div>
+```
+
+The other utilities will not generate variants, since it is better to modify the template areas instead since the column/row start/end lines will adapt to suit.
 
 ## Licence
 
