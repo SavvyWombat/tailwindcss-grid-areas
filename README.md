@@ -1,5 +1,9 @@
 # TailwindCSS Grid Areas
 
+[![Latest Version on NPM](https://img.shields.io/npm/v/@savvywombat/tailwindcss-grid-areas)](https://www.npmjs.com/package/@savvywombat/tailwindcss-areas)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/SavvyWombat/tailwindcss-grid-areas/blob/main/LICENSE)
+[![Build](https://img.shields.io/github/workflow/status/SavvyWombat/tailwindcss-grid-areas/Test?label=build)](https://github.com/SavvyWombat/tailwindcss-grid-areas/actions)
+
 A plugin to provide TailwindCSS utilities for grid areas.
 
 ## Installation
