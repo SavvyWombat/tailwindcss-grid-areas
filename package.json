@@ -1,6 +1,6 @@
 {
   "name": "@savvywombat/tailwindcss-grid-areas",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A plugin to provide TailwindCSS utilities for grid areas.",
   "keywords": ["tailwind", "tailwindcss", "css", "css grid", "css grid area", "grid-template-areas"],
   "license": "MIT",
