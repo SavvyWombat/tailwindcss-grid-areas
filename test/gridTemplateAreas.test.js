@@ -10,7 +10,7 @@ test('returns all utilities for grid areas', () => {
     theme: {
       gridTemplateAreas: {
         layout: ['first .', 'second second'],
-      }
+      },
     },
     variants: {
       gridTemplateAreas: ['responsive'],
@@ -51,7 +51,7 @@ test('returns all utilities for grid areas', () => {
           },
         },
       ],
-      variants: ['responsive']
+      variants: ['responsive'],
     },
     {
       utilities: [
@@ -61,10 +61,10 @@ test('returns all utilities for grid areas', () => {
           },
           '.grid-in-second': {
             'grid-area': 'second',
-          }
+          },
         },
       ],
-      variants: []
+      variants: [],
     },
     {
       utilities: [
@@ -96,7 +96,7 @@ test('returns all utilities for grid areas', () => {
         },
       ],
       variants: [],
-    }
+    },
   ])
 })
 
@@ -109,7 +109,7 @@ test('works for multiple grid templates', () => {
       gridTemplateAreas: {
         default: ['first .', 'second second'],
         slim: ['first', 'second'],
-      }
+      },
     },
     variants: {
       gridTemplateAreas: ['responsive'],
@@ -153,7 +153,7 @@ test('works for multiple grid templates', () => {
           },
         },
       ],
-      variants: ['responsive']
+      variants: ['responsive'],
     },
     {
       utilities: [
@@ -163,10 +163,10 @@ test('works for multiple grid templates', () => {
           },
           '.grid-in-second': {
             'grid-area': 'second',
-          }
+          },
         },
       ],
-      variants: []
+      variants: [],
     },
     {
       utilities: [
@@ -198,7 +198,7 @@ test('works for multiple grid templates', () => {
         },
       ],
       variants: [],
-    }
+    },
   ])
 })
 
@@ -210,7 +210,7 @@ test('works for more than two rows', () => {
     theme: {
       gridTemplateAreas: {
         layout: ['first .', 'second second', 'third third'],
-      }
+      },
     },
     variants: {
       gridTemplateAreas: ['responsive'],
@@ -251,7 +251,7 @@ test('works for more than two rows', () => {
           },
         },
       ],
-      variants: ['responsive']
+      variants: ['responsive'],
     },
     {
       utilities: [
@@ -264,10 +264,10 @@ test('works for more than two rows', () => {
           },
           '.grid-in-third': {
             'grid-area': 'third',
-          }
+          },
         },
       ],
-      variants: []
+      variants: [],
     },
     {
       utilities: [
@@ -311,6 +311,6 @@ test('works for more than two rows', () => {
         },
       ],
       variants: [],
-    }
+    },
   ])
 })

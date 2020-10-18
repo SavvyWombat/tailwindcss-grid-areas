@@ -7,9 +7,9 @@ module.exports = function (gridTemplateAreas) {
         // extract grid area names from the gridTemplate
         return _.flatMap(area.match(/[^\s]+/g), (match) => {
           if (match !== '.') {
-            return match;
+            return match
           }
-          return [];
+          return []
         })
       })
     })
