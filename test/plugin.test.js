@@ -1,6 +1,49 @@
 import _ from 'lodash'
 import escapeClassName from 'tailwindcss/lib/util/escapeClassName'
-import plugin from '../index'
+import plugin from '../src/plugin'
+
+test('does nothing if set to ie11', () => {
+  const addedUtilities = []
+
+  const config = {
+    target: 'relaxed',
+    theme: {
+      gridTemplateAreas: {
+        layout: ['first .', 'second second'],
+      },
+    },
+    variants: {
+      gridTemplateAreas: ['responsive'],
+    },
+  }
+
+  const getConfigValue = (path, defaultValue) => _.get(config, path, defaultValue)
+  const pluginApi = {
+    config: getConfigValue,
+    e: escapeClassName,
+    target: () => {
+      return 'ie11'
+    },
+    theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
+    variants: (path, defaultValue) => {
+      if (_.isArray(config.variants)) {
+        return config.variants
+      }
+
+      return getConfigValue(`variants.${path}`, defaultValue)
+    },
+    addUtilities(utilities, variants) {
+      addedUtilities.push({
+        utilities,
+        variants,
+      })
+    },
+  }
+
+  plugin(pluginApi)
+
+  expect(addedUtilities).toEqual([])
+})
 
 test('returns all utilities for grid areas', () => {
   const addedUtilities = []

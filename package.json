@@ -11,10 +11,11 @@
   },
   "bugs": "https://github.com/savvywombat/tailwindcss-grid-areas/issues",
   "homepage": "https://github.com/savvywombat/tailwindcss-grid-areas#readme",
-  "main": "index.js",
+  "main": "src/plugin.js",
   "scripts": {
     "style": "eslint .",
-    "test": "jest && eslint ."
+    "test": "jest && eslint .",
+    "test:coverage": "jest --config jestconfig.coverage.json"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
