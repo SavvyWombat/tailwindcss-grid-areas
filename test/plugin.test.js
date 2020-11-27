@@ -2,54 +2,10 @@ import _ from 'lodash'
 import escapeClassName from 'tailwindcss/lib/util/escapeClassName'
 import plugin from '../src/plugin'
 
-test('does nothing if set to ie11', () => {
-  const addedUtilities = []
-
-  const config = {
-    target: 'relaxed',
-    theme: {
-      gridTemplateAreas: {
-        layout: ['first .', 'second second'],
-      },
-    },
-    variants: {
-      gridTemplateAreas: ['responsive'],
-    },
-  }
-
-  const getConfigValue = (path, defaultValue) => _.get(config, path, defaultValue)
-  const pluginApi = {
-    config: getConfigValue,
-    e: escapeClassName,
-    target: () => {
-      return 'ie11'
-    },
-    theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
-    variants: (path, defaultValue) => {
-      if (_.isArray(config.variants)) {
-        return config.variants
-      }
-
-      return getConfigValue(`variants.${path}`, defaultValue)
-    },
-    addUtilities(utilities, variants) {
-      addedUtilities.push({
-        utilities,
-        variants,
-      })
-    },
-  }
-
-  plugin(pluginApi)
-
-  expect(addedUtilities).toEqual([])
-})
-
 test('returns all utilities for grid areas', () => {
   const addedUtilities = []
 
   const config = {
-    target: 'relaxed',
     theme: {
       gridTemplateAreas: {
         layout: ['first .', 'second second'],
@@ -64,9 +20,6 @@ test('returns all utilities for grid areas', () => {
   const pluginApi = {
     config: getConfigValue,
     e: escapeClassName,
-    target: () => {
-      return 'relaxed'
-    },
     theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
     variants: (path, defaultValue) => {
       if (_.isArray(config.variants)) {
@@ -147,7 +100,6 @@ test('works for multiple grid templates', () => {
   const addedUtilities = []
 
   const config = {
-    target: 'relaxed',
     theme: {
       gridTemplateAreas: {
         default: ['first .', 'second second'],
@@ -163,9 +115,6 @@ test('works for multiple grid templates', () => {
   const pluginApi = {
     config: getConfigValue,
     e: escapeClassName,
-    target: () => {
-      return 'relaxed'
-    },
     theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
     variants: (path, defaultValue) => {
       if (_.isArray(config.variants)) {
@@ -249,7 +198,6 @@ test('works for more than two rows', () => {
   const addedUtilities = []
 
   const config = {
-    target: 'relaxed',
     theme: {
       gridTemplateAreas: {
         layout: ['first .', 'second second', 'third third'],
@@ -264,9 +212,6 @@ test('works for more than two rows', () => {
   const pluginApi = {
     config: getConfigValue,
     e: escapeClassName,
-    target: () => {
-      return 'relaxed'
-    },
     theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
     variants: (path, defaultValue) => {
       if (_.isArray(config.variants)) {

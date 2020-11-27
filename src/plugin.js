@@ -1,11 +1,7 @@
 const _ = require('lodash')
 const extractGridAreaNames = require('./util/extractGridAreaNames')
 
-module.exports = function ({ addUtilities, target, theme, variants }) {
-  if (target('gridTemplateAreas') === 'ie11') {
-    return
-  }
-
+module.exports = function ({ addUtilities, theme, variants }) {
   const gridAreaNames = extractGridAreaNames(theme('gridTemplateAreas'))
 
   const templateAreas = _.reduce(
