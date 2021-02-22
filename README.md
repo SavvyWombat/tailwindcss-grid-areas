@@ -28,8 +28,12 @@ Require the plugin into your `tailwindcss.config.js` file, and define your templ
 module.exports = {
   theme: {
     gridTemplateAreas: {
-      'layout': ['header header header', '. main .', 'footer footer footer']
-    }
+      'layout': [
+        'header header header',
+        '. main .',
+        'footer footer footer',
+      ],
+    },
   },
   plugins: [
     require('@savvywombat/tailwindcss-grid-areas')
@@ -70,7 +74,11 @@ Just as with CSS, `gridTemplateAreas` works with the core `gridTemplateColumns` 
 module.exports = {
   theme: {
     gridTemplateAreas: {
-      'layout': ['header header header', 'nav main .', 'footer footer footer']
+      'layout': [
+        'header header header',
+        'nav main .',
+        'footer footer footer',
+      ],
     },
     gridTemplateColumns: {
       'layout': '24rem 1fr 2rem',
@@ -104,9 +112,17 @@ module.exports = {
 module.exports = {
   theme: {
     gridTemplateAreas: {
-      'wide': ['header header header', '. main .', 'footer footer footer'],
-      'slim': ['header', 'main', 'footer'],
-    }
+      'wide': [
+        'header header header',
+        '. main .',
+        'footer footer footer',
+      ],
+      'slim': [
+        'header',
+        'main',
+        'footer',
+      ],
+    },
   },
   plugins: [
     require('@savvywombat/tailwindcss-grid-areas')
