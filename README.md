@@ -143,6 +143,12 @@ This allows you to modify the grid topology for responsive layouts:
 
 The other utilities will not generate variants, since it is better to modify the template areas instead since the column/row start/end lines will adapt to suit.
 
+## Related packages
+
+### [TailwindCSS Grid Named Lines](https://github.com/SavvyWombat/tailwindcss-grid-named-lines)
+
+A plugin to provide TailwindCSS utilities for named grid lines.
+
 ## Licence
 
 [MIT](https://github.com/SavvyWombat/tailwindcss-grid-areas/blob/main/LICENSE)
