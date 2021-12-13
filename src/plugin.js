@@ -1,56 +1,56 @@
-const _ = require('lodash')
-const extractGridAreaNames = require('./util/extractGridAreaNames')
+const _ = require("lodash");
+const extractGridAreaNames = require("./util/extractGridAreaNames");
 
 module.exports = function ({ addUtilities, theme, variants }) {
-  const gridAreaNames = extractGridAreaNames(theme('gridTemplateAreas'))
+  const gridAreaNames = extractGridAreaNames(theme("gridTemplateAreas"));
 
   const templateAreas = _.reduce(
-    theme('gridTemplateAreas'),
+    theme("gridTemplateAreas"),
     (templates, area, name) => {
       return {
         ...templates,
         [`.grid-areas-${name}`]: {
-          'grid-template-areas': area
+          "grid-template-areas": area
             .map((row) => {
-              return `"${row}"`
+              return `"${row}"`;
             })
-            .join('\n'),
+            .join("\n"),
         },
-      }
+      };
     },
     {}
-  )
+  );
 
-  addUtilities([templateAreas], variants('gridTemplateAreas'))
+  addUtilities([templateAreas], variants("gridTemplateAreas"));
 
   const namedAreas = gridAreaNames.reduce((areas, name) => {
     return {
       ...areas,
       [`.grid-in-${name}`]: {
-        'grid-area': name,
+        "grid-area": name,
       },
-    }
-  }, {})
+    };
+  }, {});
 
-  addUtilities([namedAreas], [])
+  addUtilities([namedAreas], []);
 
   const namedLines = gridAreaNames.reduce((lines, name) => {
     return {
       ...lines,
       [`.row-start-${name}`]: {
-        'grid-row-start': `${name}-start`,
+        "grid-row-start": `${name}-start`,
       },
       [`.row-end-${name}`]: {
-        'grid-row-end': `${name}-end`,
+        "grid-row-end": `${name}-end`,
       },
       [`.col-start-${name}`]: {
-        'grid-column-start': `${name}-start`,
+        "grid-column-start": `${name}-start`,
       },
       [`.col-end-${name}`]: {
-        'grid-column-end': `${name}-end`,
+        "grid-column-end": `${name}-end`,
       },
-    }
-  }, {})
+    };
+  }, {});
 
-  addUtilities([namedLines], [])
-}
+  addUtilities([namedLines], []);
+};
