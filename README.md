@@ -7,8 +7,6 @@
 
 A plugin to provide TailwindCSS utilities for grid areas.
 
-The latest release of this plugin (version 1.3 onwards) will work with TailwindCSS versions 1, 2 and 3.
-
 ## Installation
 
 ```

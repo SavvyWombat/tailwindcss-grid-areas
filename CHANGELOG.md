@@ -1,7 +1,8 @@
 # Changelog
 
-## 1.3.3 - 2021-12-13
+## 2.0.0 - 2021-12-13
  * Tested against TailwindCSS v3
+ * Updated minimum node requirements (v12)
  * Updated documentation
 
 ## 1.3.2 - 2021-02-24
