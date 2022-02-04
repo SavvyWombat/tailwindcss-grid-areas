@@ -1,7 +1,10 @@
 # Changelog
 
+## 2.0.1 - 2022-02-04
+ * Fixed misspelling of Tailwind CSS in documentation
+
 ## 2.0.0 - 2021-12-13
- * Tested against TailwindCSS v3
+ * Tested against Tailwind CSS v3
  * Updated minimum node requirements (v12)
  * Updated documentation
 
@@ -19,7 +22,7 @@
  * Added .npmignore to lighten the installation size.
 
 ## 1.1.0 - 2020-11-27
- * Updated to work with TailwindCSS version 2.
+ * Updated to work with Tailwind CSS version 2.
  * Added CHANGELOG.
 
 ## 1.0.1 - 2020-10-18
