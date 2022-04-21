@@ -1,4 +1,4 @@
-const _ = require("lodash");
+const _ = require('lodash')
 
 module.exports = function (gridTemplateAreas) {
   return _.uniq(
@@ -6,12 +6,12 @@ module.exports = function (gridTemplateAreas) {
       return _.flatMap(row, (area) => {
         // extract grid area names from the gridTemplate
         return _.flatMap(area.match(/[^\s]+/g), (match) => {
-          if (match !== ".") {
-            return match;
+          if (match !== '.') {
+            return match
           }
-          return [];
-        });
-      });
+          return []
+        })
+      })
     })
-  );
-};
+  )
+}
