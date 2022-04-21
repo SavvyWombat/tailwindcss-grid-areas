@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.0 - 2022-04-21
+ * Allow arbitrary values for `grid-areas-[]` and `grid-in-[]`
+
 ## 2.0.1 - 2022-02-04
  * Fixed misspelling of Tailwind CSS in documentation
 

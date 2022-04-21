@@ -36,6 +36,7 @@ test("returns all utilities for grid areas", () => {
         variants,
       });
     },
+    matchUtilities() {},
   };
 
   plugin(pluginApi);
@@ -133,6 +134,7 @@ test("works for multiple grid templates", () => {
         variants,
       });
     },
+    matchUtilities() {},
   };
 
   plugin(pluginApi);
@@ -232,6 +234,7 @@ test("works for more than two rows", () => {
         variants,
       });
     },
+    matchUtilities() {},
   };
 
   plugin(pluginApi);

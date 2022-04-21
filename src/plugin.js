@@ -1,7 +1,7 @@
 const _ = require("lodash");
 const extractGridAreaNames = require("./util/extractGridAreaNames");
 
-module.exports = function ({ addUtilities, theme, variants }) {
+module.exports = function ({ addUtilities, matchUtilities, theme, variants }) {
   const gridAreaNames = extractGridAreaNames(theme("gridTemplateAreas"));
 
   const templateAreas = _.reduce(
@@ -53,4 +53,20 @@ module.exports = function ({ addUtilities, theme, variants }) {
   }, {});
 
   addUtilities([namedLines], []);
+
+  // allow arbitrary values
+  matchUtilities({
+    "grid-areas": (value) => {
+      value = `"${value}"`;
+      value = value.replace(/ *, */g, '" "');
+      return {
+        "grid-template-areas": `${value}`,
+      };
+    },
+    "grid-in": (value) => {
+      return {
+        "grid-area": `${value}`,
+      };
+    },
+  });
 };
