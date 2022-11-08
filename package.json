@@ -1,6 +1,6 @@
 {
   "name": "@savvywombat/tailwindcss-grid-areas",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "A plugin to provide Tailwind CSS utilities for grid areas.",
   "keywords": [
     "tailwind",
