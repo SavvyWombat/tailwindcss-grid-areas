@@ -120,3 +120,39 @@ it('generates grid-area', () => {
     `)
   })
 })
+
+it('handles custom properties in arbitrary grid-areas', () => {
+  let config = {
+    content: [
+      {
+        raw: html`<div class="grid-areas-[var(--grid-areas)]"></div>`,
+      },
+    ],
+  }
+
+  return run('@tailwind utilities', config).then((result) => {
+    return expect(result.css).toMatchFormattedCss(css`
+      .grid-areas-\[var\(--grid-areas\)\] {
+        grid-template-areas: var(--grid-areas);
+      }
+    `)
+  })
+})
+
+it('handles custom properties mixed with regular properties in arbitrary grid-areas', () => {
+  let config = {
+    content: [
+      {
+        raw: html`<div class="grid-areas-[top_top,var(--grid-areas)]"></div>`,
+      },
+    ],
+  }
+
+  return run('@tailwind utilities', config).then((result) => {
+    return expect(result.css).toMatchFormattedCss(css`
+      .grid-areas-\[top_top\2c var\(--grid-areas\)\] {
+        grid-template-areas: 'top top' var(--grid-areas);
+      }
+    `)
+  })
+})

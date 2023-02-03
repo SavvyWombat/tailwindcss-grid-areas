@@ -57,8 +57,10 @@ module.exports = function ({ addUtilities, matchUtilities, theme, variants }) {
   // allow arbitrary values
   matchUtilities({
     'grid-areas': (value) => {
-      value = `"${value}"`
-      value = value.replace(/ *, */g, '" "')
+      value = value
+        .split(/ *, */)
+        .map((row) => (row.match(/var\(.*\)/g) ? row : `"${row}"`))
+        .join(' ')
       return {
         'grid-template-areas': `${value}`,
       }
