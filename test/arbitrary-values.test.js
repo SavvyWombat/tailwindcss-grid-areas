@@ -92,12 +92,12 @@ it('ignores underscores/spaces around the comma', () => {
         grid-template-areas: 'left right' 'left right';
       }
 
-      .grid-areas-\[left_right_\2c left_right\] {
-        grid-template-areas: 'left right' 'left right';
-      }
-
       .grid-areas-\[left_right_\2c _\._right\] {
         grid-template-areas: 'left right' '. right';
+      }
+
+      .grid-areas-\[left_right_\2c left_right\] {
+        grid-template-areas: 'left right' 'left right';
       }
     `)
   })
