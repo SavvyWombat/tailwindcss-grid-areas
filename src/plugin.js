@@ -21,7 +21,16 @@ module.exports = function ({ addUtilities, matchUtilities, theme, variants }) {
     {}
   )
 
-  addUtilities([templateAreas], variants('gridTemplateAreas'))
+  const specialTemplateAreas = {
+    '.grid-areas-none': { 'grid-template-areas': 'none' },
+    '.grid-areas-inherit': { 'grid-template-areas': 'inherit' },
+    '.grid-areas-initial': { 'grid-template-areas': 'initial' },
+    '.grid-areas-revert': { 'grid-template-areas': 'revert' },
+    '.grid-areas-revert-layer': { 'grid-template-areas': 'revert-layer' },
+    '.grid-areas-unset': { 'grid-template-areas': 'unset' },
+  }
+
+  addUtilities([templateAreas, specialTemplateAreas], variants('gridTemplateAreas'))
 
   const namedAreas = gridAreaNames.reduce((areas, name) => {
     return {
@@ -32,7 +41,16 @@ module.exports = function ({ addUtilities, matchUtilities, theme, variants }) {
     }
   }, {})
 
-  addUtilities([namedAreas], [])
+  const specialNamedAreas = {
+    '.grid-in-auto': { 'grid-area': 'auto' },
+    '.grid-in-inherit': { 'grid-area': 'inherit' },
+    '.grid-in-initial': { 'grid-area': 'initial' },
+    '.grid-in-revert': { 'grid-area': 'revert' },
+    '.grid-in-revert-layer': { 'grid-area': 'revert-layer' },
+    '.grid-in-unset': { 'grid-area': 'unset' },
+  }
+
+  addUtilities([namedAreas, specialNamedAreas], [])
 
   const namedLines = gridAreaNames.reduce((lines, name) => {
     return {

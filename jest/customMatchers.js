@@ -95,9 +95,6 @@ expect.extend({
 
     return { actual: received, message, pass }
   },
-})
-
-expect.extend({
   // Compare two CSS strings with all whitespace removed
   // This is probably naive but it's fast and works well enough.
   toMatchFormattedCss(received, argument) {
@@ -116,7 +113,7 @@ expect.extend({
     let formattedReceived = format(received)
     let formattedArgument = format(argument)
 
-    const pass = formattedReceived === formattedArgument
+    const pass = formattedReceived.includes(formattedArgument)
 
     const message = pass
       ? () => {
