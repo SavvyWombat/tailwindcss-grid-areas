@@ -12,12 +12,14 @@ test('original utilities are still available', () => {
           <div class="grid grid-cols-[1fr_120px]"></div>
           <div class="grid grid-cols-3"></div>
           <div class="grid grid-cols-base"></div>
-          <div class="grid grid-areas-mobile-order-list"></div>
+          <div class="grid grid-areas-mobile-order-list">
+            <div class="grid-in-left"></div>
+          </div>
         `,
       },
     ],
     theme: {
-      extends: {
+      extend: {
         gridTemplateAreas: {
           'mobile-order-list': ['left right', 'left2 right2', 'notes notes'],
         },
@@ -62,6 +64,18 @@ test('original utilities are still available', () => {
       
       .grid-cols-\\[minmax\\(100px\\2c 120px\\)_1fr\\] {
           grid-template-columns: minmax(100px,120px) 1fr;
+      }
+      
+      .grid-cols-base {
+        grid-template-columns: 240px 1fr;
+      }
+      
+      .grid-areas-mobile-order-list {
+        grid-template-areas: 'left right' 'left2 right2' 'notes notes';
+      }
+      
+      .grid-in-left {
+        grid-area: left;
       }
     `)
   })
