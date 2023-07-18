@@ -19,6 +19,7 @@
   "bugs": "https://github.com/savvywombat/tailwindcss-grid-areas/issues",
   "homepage": "https://github.com/savvywombat/tailwindcss-grid-areas#readme",
   "main": "src/plugin.js",
+  "types": "src/plugin.d.ts",
   "scripts": {
     "style": "eslint .",
     "test": "jest && eslint .",
