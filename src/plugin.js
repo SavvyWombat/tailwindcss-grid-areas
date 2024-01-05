@@ -1,10 +1,10 @@
-const _ = require('lodash')
+const { reduce } = require('./util/lodash-fns')
 const extractGridAreaNames = require('./util/extractGridAreaNames')
 
 module.exports = function ({ addUtilities, matchUtilities, theme, variants }) {
   const gridAreaNames = extractGridAreaNames(theme('gridTemplateAreas'))
 
-  const templateAreas = _.reduce(
+  const templateAreas = reduce(
     theme('gridTemplateAreas'),
     (templates, area, name) => {
       return {
