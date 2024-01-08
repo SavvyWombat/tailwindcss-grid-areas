@@ -1,4 +1,4 @@
-function reduce(collection, iteratee, initialVal) {
+function reduce(collection, item, initialVal) {
   if (!collection) return []
   return Object.keys(collection).reduce(
     (carry, current, index, array) =>
