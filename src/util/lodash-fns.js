@@ -1,11 +1,12 @@
-function reduce(collection, iteratee, initialVal) {
+function reduce(collection, item, initialVal) {
   if (!collection) return []
   return Object.keys(collection).reduce(
-    (prev, curr, _, arr) =>
-      iteratee(
+    (prev, curr, index, arr) =>
+      item(
         prev,
         !Array.isArray(collection) ? collection[curr] : curr,
-        !Array.isArray(collection) ? curr : arr
+        !Array.isArray(collection) ? curr : arr,
+          index
       ),
     initialVal
   )
