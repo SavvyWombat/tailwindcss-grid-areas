@@ -6,7 +6,7 @@ function reduce(collection, item, initialVal) {
         carry,
         !Array.isArray(collection) ? collection[current] : current,
         !Array.isArray(collection) ? current : array,
-          index
+        index
       ),
     initialVal
   )
