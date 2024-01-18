@@ -1,20 +1,41 @@
-import _ from 'lodash'
 import escapeClassName from 'tailwindcss/lib/util/escapeClassName'
 import plugin from '../src/plugin'
 import { expect, test } from '@jest/globals'
+
+function get(object, path, defaultValue) {
+  let localePath = path
+  if (typeof path === 'string') {
+    localePath = path.split('.').map((key) => {
+      const numKey = Number(key)
+      return Number.isNaN(numKey) ? key : numKey
+    })
+  }
+
+  let result = object
+
+  for (const key of localePath) {
+    if (!result) {
+      return defaultValue
+    }
+
+    result = result[key]
+  }
+
+  return result ?? defaultValue
+}
 
 test('returns default utilities', () => {
   const addedUtilities = []
 
   const config = {}
 
-  const getConfigValue = (path, defaultValue) => _.get(config, path, defaultValue)
+  const getConfigValue = (path, defaultValue) => get(config, path, defaultValue)
   const pluginApi = {
     config: getConfigValue,
     e: escapeClassName,
     theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
     variants: (path, defaultValue) => {
-      if (_.isArray(config.variants)) {
+      if (Array.isArray(config.variants)) {
         return config.variants
       }
 
@@ -100,13 +121,13 @@ test('returns all utilities for grid areas', () => {
     },
   }
 
-  const getConfigValue = (path, defaultValue) => _.get(config, path, defaultValue)
+  const getConfigValue = (path, defaultValue) => get(config, path, defaultValue)
   const pluginApi = {
     config: getConfigValue,
     e: escapeClassName,
     theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
     variants: (path, defaultValue) => {
-      if (_.isArray(config.variants)) {
+      if (Array.isArray(config.variants)) {
         return config.variants
       }
 
@@ -200,13 +221,13 @@ test('works for multiple grid templates', () => {
     },
   }
 
-  const getConfigValue = (path, defaultValue) => _.get(config, path, defaultValue)
+  const getConfigValue = (path, defaultValue) => get(config, path, defaultValue)
   const pluginApi = {
     config: getConfigValue,
     e: escapeClassName,
     theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
     variants: (path, defaultValue) => {
-      if (_.isArray(config.variants)) {
+      if (Array.isArray(config.variants)) {
         return config.variants
       }
 
@@ -302,13 +323,13 @@ test('works for more than two rows', () => {
     },
   }
 
-  const getConfigValue = (path, defaultValue) => _.get(config, path, defaultValue)
+  const getConfigValue = (path, defaultValue) => get(config, path, defaultValue)
   const pluginApi = {
     config: getConfigValue,
     e: escapeClassName,
     theme: (path, defaultValue) => getConfigValue(`theme.${path}`, defaultValue),
     variants: (path, defaultValue) => {
-      if (_.isArray(config.variants)) {
+      if (Array.isArray(config.variants)) {
         return config.variants
       }
 

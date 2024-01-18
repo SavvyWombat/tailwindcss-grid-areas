@@ -24,9 +24,6 @@
     "test": "jest && eslint .",
     "test:coverage": "jest --config jestconfig.coverage.json"
   },
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
   "peerDependencies": {
     "tailwindcss": "^3.0.1"
   },

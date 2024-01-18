@@ -1,11 +1,11 @@
-const _ = require('lodash')
+const { uniq, flatMap } = require('./lodash-fns')
 
 module.exports = function (gridTemplateAreas) {
-  return _.uniq(
-    _.flatMap(gridTemplateAreas, (row) => {
-      return _.flatMap(row, (area) => {
+  return uniq(
+    flatMap(gridTemplateAreas, (row) => {
+      return flatMap(row, (area) => {
         // extract grid area names from the gridTemplate
-        return _.flatMap(area.match(/[^\s]+/g), (match) => {
+        return flatMap(area.match(/[^\s]+/g), (match) => {
           if (match !== '.') {
             return match
           }
