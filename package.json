@@ -50,14 +50,14 @@
         "@babel/preset-env",
         {
           "targets": {
-            "node": "14.18.2"
+            "node": "16.20.2"
           }
         }
       ]
     ]
   },
   "engines": {
-    "node": ">=14.18.2"
+    "node": ">=16.20.2"
   },
   "jest": {
     "testTimeout": 30000,
